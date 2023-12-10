@@ -1,3 +1,5 @@
+const { read } = require("fs");
+
 const fs = require("fs").promises;
 
 class ProductManager {
@@ -11,7 +13,7 @@ class ProductManager {
 
     async addProduct(newObject) {
 
-        let {title, description, price, thumbnail, code, stock} = newObject;
+        let { title, description, price, thumbnail, code, stock } = newObject;
 
         if (!title || !description || !price || !thumbnail || !code || !stock) {
             console.error("ERROR: Es obligatorio llenar todos los campos")
@@ -41,14 +43,19 @@ class ProductManager {
         console.log(this.products);
     };
 
-    getProductById(id) {
-        const item = this.products.find(items => items.id === id);
-        if (!item) {
-            console.error("ERROR: Producto no encontrado")
-        } else {
-            console.log("Producto encontrado: ", item)
+    async getProductById(id) {
+        try {
+            const responseArray = await this.readFile();
+            const finded = responseArray.find(item => item.id === id);
+            if (!finded) {
+                console.log("Producto no encontrado");
+            } else {
+                console.log("Producto encontrado:");
+                return finded;
+            }
+        } catch (error) {
+            console.log("Error al leer el archivo", error)
         }
-        return;
     }
 
     async readFile() {
@@ -67,6 +74,34 @@ class ProductManager {
             await fs.writeFile(this.path, JSON.stringify(responseArray, null, 2));
         } catch (error) {
             console.log("Error al guardar el archivo: ", error)
+        }
+    }
+
+    async updateProduct(id, updatedProduct) {
+        try {
+            const responseArray = await this.readFile();
+            const index = responseArray.findIndex(item => item.id === id);
+            if (index !== -1) {
+                responseArray.splice(index, 1, updatedProduct);
+                await this.saveFile(responseArray);
+            } else {
+                console.log("Producto no encontrado")
+            }
+        } catch (error) {
+            console.log("Error al actualizar el producto: ", error)
+        }
+    }
+
+    async deleteProduct(id) {
+        try {
+            const responseArray = await this.readFile();
+            const index = responseArray.findIndex(item => item.id === id);
+            if(index !== -1) {
+                responseArray.splice(index, 1);
+                await this.saveFile(responseArray);
+            }
+        } catch (error) {
+            console.log("No se pudo borrar el archivo")
         }
     }
 };
@@ -102,7 +137,7 @@ const mesa = {
 
 manager.addProduct(mesa);
 
-/* PRODUCTO PARA QUE TIRE ERROR POR REPETIRSE
+/* PRODUCTO PARA QUE TIRE ERROR POR REPETIRSE EL CODE
 const alacena = {
     title: "Nordica",
     description: "Alacena de 1.20mts",
@@ -113,4 +148,44 @@ const alacena = {
 }
 
 manager.addProduct(alacena);
+*/
+
+//5)
+manager.getProducts();
+
+//6)
+async function testGetProductById() {
+    const finded = await manager.getProductById(2);
+    console.log(finded);
+};
+
+testGetProductById();
+
+//7)
+const placard = {
+    id: 1,
+    title: "6 puertas",
+    description: "Color nogal",
+    price: 75000,
+    thumbnail: "Sin imagen",
+    code: "1001",
+    stock: 10
+};
+
+/*
+async function testUpdateProduct() {
+    await manager.updateProduct(1, placard)
+}
+
+testUpdateProduct();
+*/
+
+
+//8)
+/*
+async function testDeleteProduct() {
+    await manager.deleteProduct(1);
+}
+
+testDeleteProduct();
 */
