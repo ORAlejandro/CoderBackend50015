@@ -96,7 +96,7 @@ class ProductManager {
         try {
             const responseArray = await this.readFile();
             const index = responseArray.findIndex(item => item.id === id);
-            if(index !== -1) {
+            if (index !== -1) {
                 responseArray.splice(index, 1);
                 await this.saveFile(responseArray);
             }
@@ -105,87 +105,3 @@ class ProductManager {
         }
     }
 };
-
-//Testing:
-//1)
-const manager = new ProductManager("./products.json");
-
-//2)
-manager.getProducts();
-
-//3)
-const silla = {
-    title: "Barcelona",
-    description: "Silla de roble",
-    price: 55000,
-    thumbnail: "Sin imagen",
-    code: "1001",
-    stock: 50
-}
-
-manager.addProduct(silla);
-
-//4)
-const mesa = {
-    title: "Europa",
-    description: "Silla de guatambu",
-    price: 135700,
-    thumbnail: "Sin imagen",
-    code: "1002",
-    stock: 25
-}
-
-manager.addProduct(mesa);
-
-/* PRODUCTO PARA QUE TIRE ERROR POR REPETIRSE EL CODE
-const alacena = {
-    title: "Nordica",
-    description: "Alacena de 1.20mts",
-    price: 81250,
-    thumbnail: "Sin imagen",
-    code: "1002",
-    stock: 25
-}
-
-manager.addProduct(alacena);
-*/
-
-//5)
-manager.getProducts();
-
-//6)
-async function testGetProductById() {
-    const finded = await manager.getProductById(2);
-    console.log(finded);
-};
-
-testGetProductById();
-
-//7)
-const placard = {
-    id: 1,
-    title: "6 puertas",
-    description: "Color nogal",
-    price: 75000,
-    thumbnail: "Sin imagen",
-    code: "1001",
-    stock: 10
-};
-
-/*
-async function testUpdateProduct() {
-    await manager.updateProduct(1, placard)
-}
-
-testUpdateProduct();
-*/
-
-
-//8)
-/*
-async function testDeleteProduct() {
-    await manager.deleteProduct(1);
-}
-
-testDeleteProduct();
-*/
