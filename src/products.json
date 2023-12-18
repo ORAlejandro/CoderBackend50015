@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Laptop HP Pavilion",
+    "description": "Portátil con procesador Intel Core i7",
+    "price": 3000000,
+    "thumbnail": "ruta de la imagen",
+    "code": "qwerty1",
+    "stock": 10
+  },
+  {
+    "id": 2,
+    "title": "Cámara Canon T7i",
+    "description": "Cámara réflex digital con sensor CMOS",
+    "price": 1500000,
+    "thumbnail": "sin imagen",
+    "code": "qwerty2",
+    "stock": 25
+  },
+  {
+    "id": 3,
+    "title": "Zapatillas deportivas Nike Air Max",
+    "description": "Zapatillas de running con tecnología Air Max",
+    "price": 110500,
+    "thumbnail": "sin imagen",
+    "code": "qwerty3",
+    "stock": 30
+  },
+  {
+    "id": 4,
+    "title": "Libro El Principito",
+    "description": "Escrito por Antoine de Saint-Exupéry",
+    "price": 55750,
+    "thumbnail": "sin imagen",
+    "code": "qwerty4",
+    "stock": 50
+  },
+  {
+    "id": 5,
+    "title": "Smart TV Samsung 55",
+    "description": "Televisor inteligente 4K",
+    "price": 850000,
+    "thumbnail": "sin imagen",
+    "code": "qwerty5",
+    "stock": 35
+  },
+  {
+    "id": 6,
+    "title": "iPhone 13 PRO",
+    "description": "Último modelo de iPhone",
+    "price": 1700500,
+    "thumbnail": "sin imagen",
+    "code": "qwerty6",
+    "stock": 75
+  },
+  {
+    "id": 7,
+    "title": "Juego de mesa 'Catan'",
+    "description": "Juego estratégico de colonización",
+    "price": 88000,
+    "thumbnail": "sin imagen",
+    "code": "qwerty7",
+    "stock": 100
+  },
+  {
+    "id": 8,
+    "title": "Auriculares inalámbricos Sony",
+    "description": "Auriculares con cancelación de ruido",
+    "price": 92500,
+    "thumbnail": "sin imagen",
+    "code": "qwerty8",
+    "stock": 120
+  },
+  {
+    "id": 9,
+    "title": "Bicicleta todo terreno",
+    "description": "Shimano de alta calidad",
+    "price": 292500,
+    "thumbnail": "sin imagen",
+    "code": "qwerty9",
+    "stock": 120
+  },
+  {
+    "id": 10,
+    "title": "Licuadora Vitamix Pro",
+    "description": "Cuchillas de acero inoxidable",
+    "price": 63200,
+    "thumbnail": "sin imagen",
+    "code": "qwerty10",
+    "stock": 200
+  }
+]

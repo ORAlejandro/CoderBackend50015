@@ -105,3 +105,7 @@ class ProductManager {
         }
     }
 };
+
+const manager = new ProductManager("./products.json");
+
+module.exports = ProductManager;
